@@ -14,12 +14,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
 @NoArgsConstructor(access = AccessLevel.PACKAGE)
 @Getter
 @Setter
-@Builder
-class Employee {
+class EmployeeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "employee_sequence")

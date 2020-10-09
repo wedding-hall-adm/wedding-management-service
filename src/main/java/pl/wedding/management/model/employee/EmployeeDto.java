@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Builder
 @Getter
-class EmployeeDto {
+public class EmployeeDto {
     private final long id;
     private final String name;
     private final String surname;

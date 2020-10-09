@@ -1,21 +1,18 @@
 package pl.wedding.management.model.employee;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 
-@AllArgsConstructor(access = AccessLevel.PACKAGE)
-@NoArgsConstructor(access = AccessLevel.PACKAGE)
+@Getter
 @Builder
 class Salary {
 
-    BigDecimal finalSalary;
-    TypeOfContract TypeOfContract;
-    StatusEmployee statusEmployee;
-    int workingHours;
-    BigDecimal rate;
+    private final BigDecimal finalSalary;
+    private final TypeOfContract TypeOfContract;
+    private final StatusEmployee statusEmployee;
+    private final int workingHours;
+    private final BigDecimal rate;
 
 }
