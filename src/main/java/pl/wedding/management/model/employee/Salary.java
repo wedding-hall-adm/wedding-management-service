@@ -7,12 +7,9 @@ import java.math.BigDecimal;
 
 @Getter
 @Builder
-class Salary {
+public class Salary {
 
-    private final BigDecimal finalSalary;
-    private final TypeOfContract TypeOfContract;
-    private final StatusEmployee statusEmployee;
-    private final int workingHours;
+    private final int typeOfWork;
     private final BigDecimal rate;
 
 }
