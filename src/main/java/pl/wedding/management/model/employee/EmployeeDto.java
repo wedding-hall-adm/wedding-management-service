@@ -3,7 +3,6 @@ package pl.wedding.management.model.employee;
 import lombok.Builder;
 import lombok.Getter;
 
-
 @Builder
 @Getter
 public class EmployeeDto {
