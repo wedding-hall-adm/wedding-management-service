@@ -1,17 +1,17 @@
 package pl.wedding.management.service.reservation.domain.converter;
 
+import lombok.NoArgsConstructor;
+import pl.wedding.management.service.converter.Converter;
 import pl.wedding.management.service.reservation.domain.entity.ReservationEntity;
 import pl.wedding.management.service.reservation.domain.entity.ReservationDto;
 
 import java.time.temporal.ChronoUnit;
 
-public class ReservationConverter extends Converter<ReservationDto, ReservationEntity> {
+@NoArgsConstructor
+public class ReservationConverter implements Converter<ReservationDto, ReservationEntity> {
 
-    public ReservationConverter() {
-        super(ReservationConverter::convertToDto);
-    }
-
-    private static ReservationDto convertToDto(ReservationEntity reservationEntity) {
+    @Override
+    public ReservationDto convertFromEntity(ReservationEntity reservationEntity) {
         return new ReservationDto(reservationEntity.getId(),
                 reservationEntity.getReservationStart().truncatedTo(ChronoUnit.MINUTES),
                 reservationEntity.getReservationEnd().truncatedTo(ChronoUnit.MINUTES),
@@ -19,10 +19,5 @@ public class ReservationConverter extends Converter<ReservationDto, ReservationE
                 reservationEntity.getTenant(),
                 reservationEntity.getNumberOfGuests(),
                 reservationEntity.getOccasion());
-    }
-
-    @Override
-    public ReservationDto convertFromEntity(ReservationEntity reservationEntity) {
-        return convertToDto(reservationEntity);
     }
 }

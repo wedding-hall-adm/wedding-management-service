@@ -1,9 +1,9 @@
-package pl.wedding.management.service.reservation.domain.entity;
+package pl.wedding.management.model.reservation;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import pl.wedding.management.service.reservation.domain.enums.Occasion;
 
 import java.time.LocalDateTime;
 
@@ -12,17 +12,13 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ReservationDto {
 
-    public final long id;
-
-    public final LocalDateTime reservationStart;
-    public final LocalDateTime reservationEnd;
-
-    public final Object weddingHall; //to be changed
-    public final Object tenant; //to be changed
-
-    public int numberOfGuests;
-
-    public final Occasion occasion;
+    private final long id;
+    private final LocalDateTime reservationStart;
+    private final LocalDateTime reservationEnd;
+    private final Object weddingHall; //to be changed
+    private final Object tenant; //to be changed
+    private final int numberOfGuests;
+    private final Occasion occasion;
 
     @Override
     public boolean equals(Object o) {

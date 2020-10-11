@@ -1,7 +1,6 @@
-package pl.wedding.management.service.reservation.domain.entity;
+package pl.wedding.management.model.reservation;
 
 import lombok.*;
-import pl.wedding.management.service.reservation.domain.enums.Occasion;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
