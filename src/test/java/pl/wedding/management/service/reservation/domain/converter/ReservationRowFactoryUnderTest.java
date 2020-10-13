@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
 import java.time.Month;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class ReservationRowFactoryUnderTest {
 
@@ -20,29 +19,25 @@ class ReservationRowFactoryUnderTest {
     @BeforeEach
     void setUp() {
         reservationRowFactory = new ReservationRowFactory();
-        reservationEntity = new ReservationEntity(
-                1,
-                LocalDateTime.of(2020, Month.OCTOBER,3,18,30,0),
-                LocalDateTime.of(2020,Month.OCTOBER,4,6,30,0),
-                new Object(),
-                new Object(),
-                200,
-                Occasion.DIVORCE_PARTY
-        );
+        reservationEntity = ReservationEntity.builder()
+                .id(1)
+                .reservationStart(LocalDateTime.of(2020,Month.OCTOBER,3,18,30,0))
+                .reservationEnd(LocalDateTime.of(2020,Month.OCTOBER,4,6,30,0))
+                .numberOfGuests(200)
+                .occasion(Occasion.DIVORCE_PARTY)
+                .build();
     }
 
     @Test
     void convertFromDto_EqualObject_Equals() {
         //given
-        ReservationDto reservationDto = new ReservationDto(
-                1,
-                LocalDateTime.of(2020,Month.OCTOBER,3,18,30,0),
-                LocalDateTime.of(2020,Month.OCTOBER,4,6,30,0),
-                new Object(),
-                new Object(),
-                200,
-                Occasion.DIVORCE_PARTY
-        );
+        ReservationDto reservationDto = ReservationDto.builder()
+                .id(1)
+                .reservationStart(LocalDateTime.of(2020,Month.OCTOBER,3,18,30,0))
+                .reservationEnd(LocalDateTime.of(2020,Month.OCTOBER,4,6,30,0))
+                .numberOfGuests(200)
+                .occasion(Occasion.DIVORCE_PARTY)
+                .build();
 
         //when
         ReservationEntity result = reservationRowFactory.convertFromDto(reservationDto);
@@ -54,15 +49,13 @@ class ReservationRowFactoryUnderTest {
     @Test
     void convertFromDto_SameIdObject_Equals() {
         //given
-        ReservationDto reservationDto = new ReservationDto(
-                1,
-                LocalDateTime.of(2021,Month.OCTOBER,3,18,30,20,44),
-                LocalDateTime.of(2021,Month.OCTOBER,14,6,30,15,55),
-                new Object(),
-                new Object(),
-                2000,
-                Occasion.FUNERAL
-        );
+        ReservationDto reservationDto = ReservationDto.builder()
+                .id(1)
+                .reservationStart(LocalDateTime.of(2022,Month.OCTOBER,3,18,30,0))
+                .reservationEnd(LocalDateTime.of(2022,Month.OCTOBER,4,6,30,0))
+                .numberOfGuests(2002)
+                .occasion(Occasion.FUNERAL)
+                .build();
 
         //when
         ReservationEntity result = reservationRowFactory.convertFromDto(reservationDto);
@@ -74,15 +67,13 @@ class ReservationRowFactoryUnderTest {
     @Test
     void convertFromDto_DifferentObjectId_NotEquals() {
         //given
-        ReservationDto reservationDtoDifferId = new ReservationDto(
-                2,
-                LocalDateTime.of(2020,Month.OCTOBER,3,18,30,0),
-                LocalDateTime.of(2020,Month.OCTOBER,4,6,30,0),
-                new Object(),
-                new Object(),
-                200,
-                Occasion.DIVORCE_PARTY
-        );
+        ReservationDto reservationDtoDifferId = ReservationDto.builder()
+                .id(2)
+                .reservationStart(LocalDateTime.of(2020,Month.OCTOBER,3,18,30,0))
+                .reservationEnd(LocalDateTime.of(2020,Month.OCTOBER,4,6,30,0))
+                .numberOfGuests(200)
+                .occasion(Occasion.DIVORCE_PARTY)
+                .build();
 
         //when
         ReservationEntity result =

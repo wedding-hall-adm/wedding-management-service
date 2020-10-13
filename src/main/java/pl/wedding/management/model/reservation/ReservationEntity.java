@@ -36,4 +36,5 @@ public class ReservationEntity {
     public int hashCode() {
         return (int) (getId() ^ (getId() >>> 32));
     }
+
 }

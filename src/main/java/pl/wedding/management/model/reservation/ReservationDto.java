@@ -1,14 +1,11 @@
 package pl.wedding.management.model.reservation;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
+@Data
 @Builder
-@Getter
 @AllArgsConstructor
 public class ReservationDto {
 
