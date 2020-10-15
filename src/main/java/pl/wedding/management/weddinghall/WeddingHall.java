@@ -16,8 +16,7 @@ public class WeddingHallController {
     }
 
     @RequestMapping("/weddinghalls/{id}")
-    public List(WeddingHall) getWeddingHall(@PathVariable
-    Long id){
+    public List(WeddingHall) getWeddingHall(@PathVariable Long id){
         return weddingHallService.getAllWeddingHalls(id);
     }
 
