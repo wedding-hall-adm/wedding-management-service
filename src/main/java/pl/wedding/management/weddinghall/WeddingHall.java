@@ -7,8 +7,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class WeddingHallController {
 
-    @Autowired
     private WeddingHallService weddingHallService;
+
+    WeddingHallController(WeddingHallService weddingHallService){
+        this.weddingHallService=weddingHallService;
+    }
 
     @RequestMapping("/weddinghalls")
     public List<WeddingHall> getAllWeddingHalls(){
@@ -16,8 +19,7 @@ public class WeddingHallController {
     }
 
     @RequestMapping("/weddinghalls/{id}")
-    public List(WeddingHall) getWeddingHall(@PathVariable
-    Long id){
+    public List(WeddingHall) getWeddingHall(@PathVariable Long id){
         return weddingHallService.getAllWeddingHalls(id);
     }
 
