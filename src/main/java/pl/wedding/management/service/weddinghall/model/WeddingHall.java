@@ -9,8 +9,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WeddingHall {
-    Set<TypesOfHalls> typesOfHalls = EnumSet.allOf(TypesOfHalls.class);
-    private String address;
+    private Set<TypesOfHalls> typesOfHalls = EnumSet.allOf(TypesOfHalls.class);
     private String owner;
     private int max_guests;
 }
