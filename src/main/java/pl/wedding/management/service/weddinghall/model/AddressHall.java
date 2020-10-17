@@ -1,11 +1,10 @@
 package pl.wedding.management.service.weddinghall.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Getter
-@NoArgsConstructor
+@Builder
+@Value
 @AllArgsConstructor
 public class AddressHall {
     private String country;
