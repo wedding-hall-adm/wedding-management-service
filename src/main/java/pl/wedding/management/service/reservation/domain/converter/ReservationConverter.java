@@ -13,12 +13,12 @@ public class ReservationConverter implements Converter<ReservationDto, Reservati
 
     @Override
     public ReservationDto convertFromEntity(@NonNull ReservationEntity entity) {
-        return new ReservationDto(entity.getId(),
+        return new ReservationDto(entity.getId() == null ? null : entity.getId(),
                 entity.getReservationStart() == null ? null : entity.getReservationStart().truncatedTo(ChronoUnit.MINUTES),
                 entity.getReservationEnd() == null ? null : entity.getReservationEnd().truncatedTo(ChronoUnit.MINUTES),
                 entity.getWeddingHall() == null ? null : entity.getWeddingHall(),
                 entity.getTenant() == null ? null : entity.getTenant(),
-                entity.getNumberOfGuests(),
+                entity.getNumberOfGuests() == null ? null : entity.getNumberOfGuests(),
                 entity.getOccasion() == null ? null : entity.getOccasion());
     }
 }

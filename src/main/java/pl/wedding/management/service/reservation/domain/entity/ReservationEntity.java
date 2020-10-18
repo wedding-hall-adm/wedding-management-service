@@ -14,12 +14,12 @@ public class ReservationEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private LocalDateTime reservationStart;
     private LocalDateTime reservationEnd;
     private Object weddingHall; //to be changed
     private Object tenant; //to be changed
-    private int numberOfGuests;
+    private Integer numberOfGuests;
     @Enumerated(EnumType.STRING)
     private Occasion occasion;
 
@@ -30,11 +30,11 @@ public class ReservationEntity {
 
         ReservationEntity that = (ReservationEntity) o;
 
-        return getId() == that.getId();
+        return getId() != null ? getId().equals(that.getId()) : that.getId() == null;
     }
 
     @Override
     public int hashCode() {
-        return (int) (getId() ^ (getId() >>> 32));
+        return getId() != null ? getId().hashCode() : 0;
     }
 }

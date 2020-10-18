@@ -20,7 +20,7 @@ class ReservationRowFactoryUnderTest {
     void setUp() {
         reservationRowFactory = new ReservationRowFactory();
         reservationEntity = ReservationEntity.builder()
-                .id(1)
+                .id(1L)
                 .reservationStart(LocalDateTime.of(2020,Month.OCTOBER,3,18,30,0))
                 .reservationEnd(LocalDateTime.of(2020,Month.OCTOBER,4,6,30,0))
                 .numberOfGuests(200)
@@ -32,7 +32,7 @@ class ReservationRowFactoryUnderTest {
     void convertFromDto_EqualObject_Equals() {
         //given
         ReservationDto reservationDto = ReservationDto.builder()
-                .id(1)
+                .id(1L)
                 .reservationStart(LocalDateTime.of(2020,Month.OCTOBER,3,18,30,0))
                 .reservationEnd(LocalDateTime.of(2020,Month.OCTOBER,4,6,30,0))
                 .numberOfGuests(200)
@@ -50,7 +50,7 @@ class ReservationRowFactoryUnderTest {
     void convertFromDto_SameIdObject_Equals() {
         //given
         ReservationDto reservationDto = ReservationDto.builder()
-                .id(1)
+                .id(1L)
                 .reservationStart(LocalDateTime.of(2022,Month.OCTOBER,3,18,30,0))
                 .reservationEnd(LocalDateTime.of(2022,Month.OCTOBER,4,6,30,0))
                 .numberOfGuests(2002)
@@ -68,7 +68,7 @@ class ReservationRowFactoryUnderTest {
     void convertFromDto_DifferentObjectId_NotEquals() {
         //given
         ReservationDto reservationDtoDifferId = ReservationDto.builder()
-                .id(2)
+                .id(2L)
                 .reservationStart(LocalDateTime.of(2020,Month.OCTOBER,3,18,30,0))
                 .reservationEnd(LocalDateTime.of(2020,Month.OCTOBER,4,6,30,0))
                 .numberOfGuests(200)
@@ -90,9 +90,6 @@ class ReservationRowFactoryUnderTest {
         //when
         ReservationEntity result = reservationRowFactory.convertFromDto(reservationDtoNullValuesObject);
         //then
-        assertThat(result).hasAllNullFieldsOrPropertiesExcept("id", "numberOfGuests");
-        assertThat(result.getId()).isEqualTo(0);
-        assertThat(result.getNumberOfGuests()).isEqualTo(0);
-
+        assertThat(result).hasAllNullFieldsOrProperties();
     }
 }

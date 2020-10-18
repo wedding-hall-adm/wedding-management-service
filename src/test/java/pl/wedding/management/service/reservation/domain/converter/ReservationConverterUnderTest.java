@@ -20,7 +20,7 @@ class ReservationConverterUnderTest {
     void setUp() {
         reservationConverter = new ReservationConverter();
         reservationDto = ReservationDto.builder()
-                .id(1)
+                .id(1L)
                 .reservationStart(LocalDateTime.of(2020,Month.OCTOBER,3,18,30,0))
                 .reservationEnd(LocalDateTime.of(2020,Month.OCTOBER,4,6,30,0))
                 .numberOfGuests(200)
@@ -32,7 +32,7 @@ class ReservationConverterUnderTest {
     void convertFromEntity_EqualObject_Equals() {
         //given
         ReservationEntity reservationEntity = ReservationEntity.builder()
-                .id(1)
+                .id(1L)
                 .reservationStart(LocalDateTime.of(2020,Month.OCTOBER,3,18,30,0))
                 .reservationEnd(LocalDateTime.of(2020,Month.OCTOBER,4,6,30,0))
                 .numberOfGuests(200)
@@ -51,7 +51,7 @@ class ReservationConverterUnderTest {
     void convertFromEntity_SameIdObject_NotEquals() {
         //given
         ReservationEntity reservationEntity = ReservationEntity.builder()
-                .id(1)
+                .id(1L)
                 .reservationStart(LocalDateTime.of(2023,Month.OCTOBER,3,18,30,0))
                 .reservationEnd(LocalDateTime.of(2023,Month.OCTOBER,4,6,30,0))
                 .numberOfGuests(2003)
@@ -69,7 +69,7 @@ class ReservationConverterUnderTest {
     void convertFromEntity_DifferentIdObject_NotEquals() {
         //given
         ReservationEntity reservationEntityDifferId = ReservationEntity.builder()
-                .id(2)
+                .id(2L)
                 .reservationStart(LocalDateTime.of(2020,Month.OCTOBER,3,18,30,0))
                 .reservationEnd(LocalDateTime.of(2020,Month.OCTOBER,4,6,30,0))
                 .numberOfGuests(200)
@@ -91,8 +91,6 @@ class ReservationConverterUnderTest {
         //when
         ReservationDto result = reservationConverter.convertFromEntity(reservationEntityNullValuesObject);
         //then
-        assertThat(result).hasAllNullFieldsOrPropertiesExcept("id", "numberOfGuests");
-        assertThat(result.getId()).isEqualTo(0);
-        assertThat(result.getNumberOfGuests()).isEqualTo(0);
+        assertThat(result).hasAllNullFieldsOrProperties();
     }
 }
