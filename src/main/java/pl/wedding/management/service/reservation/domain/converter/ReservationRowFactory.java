@@ -13,15 +13,12 @@ public class ReservationRowFactory implements RowFactory<ReservationDto, Reserva
 
     @Override
     public ReservationEntity convertFromDto(@NonNull ReservationDto dto) {
-
-
-
-        return new ReservationEntity(dto.getId() == 0L ? 0L : dto.getId(),
+        return new ReservationEntity(dto.getId(),
                 dto.getReservationStart() == null ? null : dto.getReservationStart().truncatedTo(ChronoUnit.MINUTES),
                 dto.getReservationEnd() == null ? null : dto.getReservationEnd().truncatedTo(ChronoUnit.MINUTES),
                 dto.getWeddingHall() == null ? null : dto.getWeddingHall(),
                 dto.getTenant() == null ? null : dto.getTenant(),
-                dto.getNumberOfGuests() == 0 ? 0 : dto.getNumberOfGuests(),
+                dto.getNumberOfGuests(),
                 dto.getOccasion() == null ? null : dto.getOccasion());
     }
 }

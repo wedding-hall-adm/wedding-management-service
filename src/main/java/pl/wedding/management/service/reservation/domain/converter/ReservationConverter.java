@@ -18,7 +18,7 @@ public class ReservationConverter implements Converter<ReservationDto, Reservati
                 entity.getReservationEnd() == null ? null : entity.getReservationEnd().truncatedTo(ChronoUnit.MINUTES),
                 entity.getWeddingHall() == null ? null : entity.getWeddingHall(),
                 entity.getTenant() == null ? null : entity.getTenant(),
-                entity.getNumberOfGuests() == 0 ? 0 : entity.getNumberOfGuests(),
+                entity.getNumberOfGuests(),
                 entity.getOccasion() == null ? null : entity.getOccasion());
     }
 }

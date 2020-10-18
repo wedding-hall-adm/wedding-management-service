@@ -31,11 +31,31 @@ public class ReservationDto {
 
         ReservationDto that = (ReservationDto) o;
 
-        return getId() == that.getId();
+        if (getId() != that.getId()) return false;
+        if (getNumberOfGuests() != that.getNumberOfGuests()) return false;
+        if (getReservationStart() != null ? !getReservationStart().equals(that.getReservationStart()) : that.getReservationStart() != null)
+            return false;
+        if (getReservationEnd() != null ? !getReservationEnd().equals(that.getReservationEnd()) : that.getReservationEnd() != null)
+            return false;
+        /*
+        if (getWeddingHall() != null ? !getWeddingHall().equals(that.getWeddingHall()) : that.getWeddingHall() != null)
+            return false;
+        if (getTenant() != null ? !getTenant().equals(that.getTenant()) : that.getTenant() != null) return false;
+        */
+        return getOccasion() == that.getOccasion();
     }
 
     @Override
     public int hashCode() {
-        return (int) (getId() ^ (getId() >>> 32));
+        int result = (int) (getId() ^ (getId() >>> 32));
+        result = 31 * result + (getReservationStart() != null ? getReservationStart().hashCode() : 0);
+        result = 31 * result + (getReservationEnd() != null ? getReservationEnd().hashCode() : 0);
+        /*
+        result = 31 * result + (getWeddingHall() != null ? getWeddingHall().hashCode() : 0);
+        result = 31 * result + (getTenant() != null ? getTenant().hashCode() : 0);
+         */
+        result = 31 * result + getNumberOfGuests();
+        result = 31 * result + (getOccasion() != null ? getOccasion().hashCode() : 0);
+        return result;
     }
 }

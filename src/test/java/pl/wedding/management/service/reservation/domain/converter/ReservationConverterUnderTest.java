@@ -48,7 +48,7 @@ class ReservationConverterUnderTest {
     }
 
     @Test
-    void convertFromEntity_SameIdObject_Equals() {
+    void convertFromEntity_SameIdObject_NotEquals() {
         //given
         ReservationEntity reservationEntity = ReservationEntity.builder()
                 .id(1)
@@ -62,7 +62,7 @@ class ReservationConverterUnderTest {
         ReservationDto result = reservationConverter.convertFromEntity(reservationEntity);
 
         //then
-        assertThat(result).isEqualTo(reservationDto);
+        assertThat(result).isNotEqualTo(reservationDto);
     }
 
     @Test
