@@ -12,13 +12,16 @@ import java.time.temporal.ChronoUnit;
 public class ReservationRowFactory implements RowFactory<ReservationDto, ReservationEntity> {
 
     @Override
-    public ReservationEntity convertFromDto(@NonNull ReservationDto reservationDto) {
-        return new ReservationEntity(reservationDto.getId(),
-                reservationDto.getReservationStart().truncatedTo(ChronoUnit.MINUTES),
-                reservationDto.getReservationEnd().truncatedTo(ChronoUnit.MINUTES),
-                reservationDto.getWeddingHall(),
-                reservationDto.getTenant(),
-                reservationDto.getNumberOfGuests(),
-                reservationDto.getOccasion());
+    public ReservationEntity convertFromDto(@NonNull ReservationDto dto) {
+
+
+
+        return new ReservationEntity(dto.getId() == 0L ? 0L : dto.getId(),
+                dto.getReservationStart() == null ? null : dto.getReservationStart().truncatedTo(ChronoUnit.MINUTES),
+                dto.getReservationEnd() == null ? null : dto.getReservationEnd().truncatedTo(ChronoUnit.MINUTES),
+                dto.getWeddingHall() == null ? null : dto.getWeddingHall(),
+                dto.getTenant() == null ? null : dto.getTenant(),
+                dto.getNumberOfGuests() == 0 ? 0 : dto.getNumberOfGuests(),
+                dto.getOccasion() == null ? null : dto.getOccasion());
     }
 }

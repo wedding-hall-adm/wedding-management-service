@@ -83,4 +83,16 @@ class ReservationConverterUnderTest {
         //then
         assertThat(result).isNotEqualTo(reservationDto);
     }
+
+    @Test
+    void convertFromEntity_NullValuesObject_NoNPE() {
+        //given
+        ReservationEntity reservationEntityNullValuesObject = ReservationEntity.builder().build();
+        //when
+        ReservationDto result = reservationConverter.convertFromEntity(reservationEntityNullValuesObject);
+        //then
+        assertThat(result).hasAllNullFieldsOrPropertiesExcept("id", "numberOfGuests");
+        assertThat(result.getId()).isEqualTo(0);
+        assertThat(result.getNumberOfGuests()).isEqualTo(0);
+    }
 }

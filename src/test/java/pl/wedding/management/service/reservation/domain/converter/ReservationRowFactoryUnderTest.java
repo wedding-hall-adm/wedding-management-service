@@ -82,4 +82,17 @@ class ReservationRowFactoryUnderTest {
         //then
         assertThat(result).isNotEqualTo(reservationEntity);
     }
+
+    @Test
+    void convertFromDto_NullValuesObject_noNPE() {
+        //given
+        ReservationDto reservationDtoNullValuesObject = ReservationDto.builder().build();
+        //when
+        ReservationEntity result = reservationRowFactory.convertFromDto(reservationDtoNullValuesObject);
+        //then
+        assertThat(result).hasAllNullFieldsOrPropertiesExcept("id", "numberOfGuests");
+        assertThat(result.getId()).isEqualTo(0);
+        assertThat(result.getNumberOfGuests()).isEqualTo(0);
+
+    }
 }
