@@ -27,9 +27,7 @@ public class ReservationEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         ReservationEntity that = (ReservationEntity) o;
-
         return getId() != null ? getId().equals(that.getId()) : that.getId() == null;
     }
 

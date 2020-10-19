@@ -15,14 +15,10 @@ import java.time.LocalDateTime;
 public class ReservationDto {
 
     public final Long id;
-
     public final LocalDateTime reservationStart;
     public final LocalDateTime reservationEnd;
-
     public final Object weddingHall; //to be changed
     public final Object tenant; //to be changed
-
     public Integer numberOfGuests;
-
     public final Occasion occasion;
 }
