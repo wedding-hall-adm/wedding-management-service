@@ -47,6 +47,24 @@ class ReservationRowFactoryUnderTest {
     }
 
     @Test
+    void convertFromDto_EqualObjectWithSeconds_Equals() {
+        //given
+        ReservationDto reservationDto = ReservationDto.builder()
+                .id(1L)
+                .reservationStart(LocalDateTime.of(2020,Month.OCTOBER,3,18,30,30,333))
+                .reservationEnd(LocalDateTime.of(2020,Month.OCTOBER,4,6,30,30,333))
+                .numberOfGuests(200)
+                .occasion(Occasion.DIVORCE_PARTY)
+                .build();
+
+        //when
+        ReservationEntity result = reservationRowFactory.convertFromDto(reservationDto);
+
+        //then
+        assertThat(result).isEqualTo(reservationEntity);
+    }
+
+    @Test
     void convertFromDto_SameIdObject_Equals() {
         //given
         ReservationDto reservationDto = ReservationDto.builder()

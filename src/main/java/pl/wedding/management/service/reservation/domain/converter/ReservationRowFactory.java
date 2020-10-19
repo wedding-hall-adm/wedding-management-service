@@ -13,13 +13,6 @@ import java.util.Optional;
 @NoArgsConstructor
 public class ReservationRowFactory implements RowFactory<ReservationDto, ReservationEntity> {
 
-    private LocalDateTime getDateTime(LocalDateTime input) {
-        Optional<LocalDateTime> optionalLocalDateTime = Optional.ofNullable(input);
-        if (optionalLocalDateTime.isPresent())
-            return optionalLocalDateTime.get().truncatedTo(ChronoUnit.MINUTES);
-        return null;
-    }
-
     @Override
     public ReservationEntity convertFromDto(@NonNull ReservationDto dto) {
         return new ReservationEntity(dto.getId(),
@@ -29,5 +22,11 @@ public class ReservationRowFactory implements RowFactory<ReservationDto, Reserva
                 dto.getTenant(),
                 dto.getNumberOfGuests(),
                 dto.getOccasion());
+    }
+
+    private LocalDateTime getDateTime(LocalDateTime dateTime) {
+        return Optional.ofNullable(dateTime)
+                .map(input -> input.truncatedTo(ChronoUnit.MINUTES))
+                .orElse(null);
     }
 }

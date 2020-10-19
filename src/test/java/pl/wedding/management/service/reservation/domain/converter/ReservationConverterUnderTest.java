@@ -48,6 +48,25 @@ class ReservationConverterUnderTest {
     }
 
     @Test
+    void convertFromEntity_EqualObjectWithSeconds_Equals() {
+        //given
+        ReservationEntity reservationEntity = ReservationEntity.builder()
+                .id(1L)
+                .reservationStart(LocalDateTime.of(2020,Month.OCTOBER,3,18,30,30,333))
+                .reservationEnd(LocalDateTime.of(2020,Month.OCTOBER,4,6,30,30,333))
+                .numberOfGuests(200)
+                .occasion(Occasion.DIVORCE_PARTY)
+                .build();
+
+        //when
+        ReservationDto result = reservationConverter.convertFromEntity(reservationEntity);
+
+        //then
+        assertThat(result).isEqualTo(reservationDto);
+
+    }
+
+    @Test
     void convertFromEntity_SameIdObject_NotEquals() {
         //given
         ReservationEntity reservationEntity = ReservationEntity.builder()

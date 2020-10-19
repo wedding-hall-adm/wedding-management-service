@@ -13,13 +13,6 @@ import java.util.Optional;
 @NoArgsConstructor
 public class ReservationConverter implements Converter<ReservationDto, ReservationEntity> {
 
-    private LocalDateTime getDateTime(LocalDateTime input) {
-        Optional<LocalDateTime> optionalLocalDateTime = Optional.ofNullable(input);
-        if (optionalLocalDateTime.isPresent())
-            return optionalLocalDateTime.get().truncatedTo(ChronoUnit.MINUTES);
-        return null;
-    }
-
     @Override
     public ReservationDto convertFromEntity(@NonNull ReservationEntity entity) {
         return new ReservationDto(entity.getId(),
@@ -29,5 +22,11 @@ public class ReservationConverter implements Converter<ReservationDto, Reservati
                 entity.getTenant(),
                 entity.getNumberOfGuests(),
                 entity.getOccasion());
+    }
+
+    private LocalDateTime getDateTime(LocalDateTime dateTime) {
+        return Optional.ofNullable(dateTime)
+                .map(input -> input.truncatedTo(ChronoUnit.MINUTES))
+                .orElse(null);
     }
 }
