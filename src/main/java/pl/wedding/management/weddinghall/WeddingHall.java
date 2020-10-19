@@ -1,30 +1,41 @@
 package pl.wedding.management.weddinghall;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
+@RequestMapping("/weddinghalls")
 @RestController
-public class WeddingHallController {
+class WeddingHallController {
 
-    private WeddingHallService weddingHallService;
+    private final WeddingHallService weddingHallService;
 
     WeddingHallController(WeddingHallService weddingHallService){
         this.weddingHallService=weddingHallService;
     }
 
-    @RequestMapping("/weddinghalls")
-    public List<WeddingHall> getAllWeddingHalls(){
-        return weddingHallService.getAllWeddingHalls();
+    @GetMapping
+    public ResponseEntity getAllWeddingHalls() {
+        return ResponseEntity.ok(weddingHallService.findAll());
     }
 
-    @RequestMapping("/weddinghalls/{id}")
-    public List(WeddingHall) getWeddingHall(@PathVariable Long id){
-        return weddingHallService.getAllWeddingHalls(id);
+    @GetMapping("/{id}")
+    public ResponseEntity getWeddingHallById(@RequestParam("id") Long id) {
+        return ResponseEntity.ok(weddingHallService.findById(id));
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/weddinghalls")
-    public void addWeddingHall(@RequestBody WeddingHall weddingHall){
-        weddingHallService.addWeddingHall(weddingHall);
+    @PostMapping("/")
+    void addWeddingHall(@RequestBody WeddingHallService weddingHallService){
+        weddingHallService.addWeddingHall(weddingHallService);
+    }
+
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity deleteWeddingHallById(@RequestParam("id") Long id) {
+        try {
+            weddingHallService.deleteById(id);
+            return ResponseEntity.noContent();
+        } catch (TaskNotFoundException e) {
+            return ResponseEntity.notFound();
+        }
     }
 }
