@@ -1,0 +1,8 @@
+To make use of MySQL DB in Docker do the following steps (Windows OS instruction):
+1. Make sure you have Docker installed. For Windows, Docker Desktop is
+sufficient solution.
+2. Open cmd or Powershell and navigate to docker-compose.yml file.
+3. Run command: docker-compose up -d.
+4. You can use database. If you do not do that, you will find an error during
+starting the application from MySql connector.
+5. If you want to stop the container type following command: docker-compose down
