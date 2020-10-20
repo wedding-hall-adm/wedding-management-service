@@ -6,7 +6,6 @@ import java.util.Set;
 
 @Builder
 @Getter
-@AllArgsConstructor
 public class WeddingHall {
     private final Set<TypesOfHalls> typesOfHalls;
     private final Set<HallsEquipment> hallEquipment;
