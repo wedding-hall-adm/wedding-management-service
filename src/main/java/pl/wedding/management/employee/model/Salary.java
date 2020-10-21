@@ -1,4 +1,4 @@
-package pl.wedding.management.model.employee;
+package pl.wedding.management.employee.model;
 
 import lombok.Builder;
 import lombok.Getter;

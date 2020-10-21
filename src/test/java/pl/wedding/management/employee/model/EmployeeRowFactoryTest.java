@@ -1,7 +1,8 @@
-package pl.wedding.management.model.employee;
+package pl.wedding.management.employee.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import pl.wedding.management.employee.service.EmployeeRowFactory;
 
 import java.math.BigDecimal;
 

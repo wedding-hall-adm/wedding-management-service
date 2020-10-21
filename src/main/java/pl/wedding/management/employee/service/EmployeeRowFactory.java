@@ -1,4 +1,7 @@
-package pl.wedding.management.model.employee;
+package pl.wedding.management.employee.service;
+
+import pl.wedding.management.employee.model.EmployeeDto;
+import pl.wedding.management.employee.model.EmployeeEntity;
 
 class EmployeeRowFactory {
 
