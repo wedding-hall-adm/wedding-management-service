@@ -1,8 +1,13 @@
-package pl.wedding.management.employee.model;
+package pl.wedding.management.employee.service;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pl.wedding.management.employee.service.EmployeeRowFactory;
+import pl.wedding.management.employee.model.EmployeeDto;
+import pl.wedding.management.employee.model.EmployeeEntity;
+import pl.wedding.management.employee.model.PositionEmployee;
+import pl.wedding.management.employee.model.Salary;
+import pl.wedding.management.employee.model.StatusEmployee;
+import pl.wedding.management.employee.model.TypeOfContract;
 
 import java.math.BigDecimal;
 
